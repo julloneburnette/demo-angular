@@ -1,0 +1,48 @@
+<!--<app-search-box (update)="term = $event"><app-search-box>-->
+  <div class="row">
+
+    <div class="col-md-2">
+      <div class="form-group">
+
+        <select class="form-control" id="sel1" (click)="onSelected($event)">
+          <option value="1">Market Name</option>
+              <option value="2">Market Code</option>
+              <option value="3">SubMarket Name</option>
+              <option value="4">SubMarket Code</option>
+        </select>
+      </div>
+    </div>
+
+      <div class="col-md-4">
+       <input type="text" [(ngModel)]="filterStatus" >
+      </div>
+      <div class="col-md-6"></div>
+  </div>
+<!-- Table -->
+  <table class="table">
+    <tr>
+      <th>Category</th>
+      <th>Market Name </th>
+      <th>Market Code </th>
+      <th>SubMarket Code </th>
+      <th>SubMarket Code </th>
+      <th>Year</th>
+      <th>Q1</th>
+      <th>Q2</th>
+      <th>Q3</th>
+      <th>Q4</th>
+
+    </tr>
+    <tr *ngFor="let item of observableMarkets | async |filter: filterStatus: filterStatusName">
+      <td>{{item.name }}</td>
+      <td>{{item.marketName}}</td>
+      <td>{{item.marketCode}}</td>
+      <td>{{item.subMarketName}}</td>
+      <td>{{item.subMarketCode}}</td>
+      <td>{{item.value}}</td>
+      <td>{{item.q1}}</td>
+      <td>{{item.q2}}</td>
+      <td>{{item.q3}}</td>
+      <td>{{item.q4}}</td>
+    </tr>
+  </table>
